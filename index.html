@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Tugas Program</title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+</head>
+<body ng-app="tupro" ng-controller="myCtrl">
+	<div class="row" style="margin-top: 20px;">
+  		<div class="col-sm-4"></div>
+  		<div class="col-sm-4">
+  			<input type="text" class="form-control" ng-change="changeHandler()" ng-model="asd">
+  		</div>
+  		<div class="col-sm-4">
+  		</div>
+	</div>
+
+	<div class="row" style="margin-top: 20px;">
+		<div class="col-sm-4"></div>
+		<div class="col-sm-4">
+			<h4>
+				<p>Masukkan terahir	: {{lastchar}}</p>
+				<p>State sekarang	: {{currState}}</p>
+				<p>token			: {{token}}</p>
+			</h4>
+			<button type="button" class="btn btn-primary" ng-click="reset()">Reset</button>
+		</div>
+		<div class="col-sm-4"></div>
+	</div>
+
+</body>
+	<script type="text/javascript" src="app.js"></script>
+</html>
