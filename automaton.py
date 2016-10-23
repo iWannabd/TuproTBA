@@ -1,20 +1,19 @@
 fa = {
-	# berikut adalah data tabel FA yang dimuat dalam bentuk dictionary python
 	"A":
   {
-    "a": "I",
+    "a": "F",
     " ": "A",
-    "n": "E",
+    "n": "C",
     "q": "B",
     "p": "B",
     "s": "B",
     "r": "B",
-    "t": "W",
-    "x": "P",
-    "o": "L",
-    "i": "T",
-    "(": "N",
-    ")": "O"
+    "t": "Q",
+    "x": "K",
+    "o": "I",
+    "i": "N",
+    "(": "U",
+    ")": "V"
   },
     "B":
   {
@@ -26,126 +25,120 @@ fa = {
   },
     "C":
   {
-    " ": "C",
-    "q": "C",
-    "p": "C",
-    "s": "C",
-    "r": "C"
+    "o": "D"
+  },
+    "D":
+  {
+    "t": "E"
   },
     "E":
   {
-    "o": "F"
+    " ": "A"
   },
     "F":
   {
-    " ": "A",
-    "t": "G"
+    "n": "G"
   },
     "G":
+  {
+    "d": "H"
+  },
+    "H":
   {
     " ": "A"
   },
     "I":
   {
-    "n": "J"
+    "r": "J"
   },
     "J":
   {
-    "d": "K"
+    " ": "A"
   },
     "K":
   {
-    " ": "A"
+    "o": "L",
   },
     "L":
   {
-    " ": "A",
     "r": "M"
   },
     "M":
   {
     " ": "A"
   },
+    "N":
+  {
+    "f": "O"
+  },
+    "O":
+  {
+    " ": "A",
+    "f": "P"
+  },
     "P":
   {
-    "o": "Q",
-    "r": "R"
+    " ": "A"
   },
     "Q":
   {
-    "r": "R"
+    "h": "R"
   },
     "R":
   {
-    " ": "A"
+    "e": "S"
   },
-    "T":
+    "S":
   {
-    "f": "U"
+    "n": "T"
   },
-    "U":
+  "T":
   {
-    " ": "A",
-    "f": "V"
+    " ":"A"
   },
-    "W":
-  {
-    "h": "X"
-  },
-    "X":
-  {
-    "e": "Y"
-  },
-    "Y":
-  {
-    "n": "Z"
-  },
-    "Z":
-  {
-    " ": "A"
-  },
+  	"U":
+  	{
+  	   " ":"A"
+  	},
   	"V":
   	{
-  		" ":"A"
-  	},
-  	"N":
-  	{
-  		" ":"A"
-  	},
-  	"O":
-  	{
-  		" ":"A"
+  	   " ":"A"
   	}
-
-
 
 }
 #daftar final state
 finalstate = {
-	'B''G''K''M''R''U''Z''V''N''O'
+	'B''E''H''J''M''P''T''U''V''O'
 }
+
 #berisi daftar dtate token beserta nomornya
 tokens = {
 	'B':1,
-	'G':2,
-	'K':3,
-	'M':4,
-	'R':5,
-	'U':6,
-	'Z':7,
-	'V':8,
-	'N':9,
+	'E':2,
+	'H':3,
+	'J':4,
+	'M':5,
+	'P':6,
+	'T':7,
+	'U':8,
+	'V':9,
 	'O':10
 }
 
 def bacakan(transisi,init,finals,string):
-	#fungsi ini mengouputkan nomor token berdasarkan string yang dibaca
+        #fungsi ini mengouputkan nomor token berdasarkan string yang dibaca
 	tok = [] # daftar token yang dibaca
 	state = init #init diisi dengan state awal
 	for x in string:
-		state = transisi[state][x] #state diganti dengan next state, berulang sepanjang string
-		if state in tokens:
-			tok.append(tokens[state]) #menambahkan nomor token yang terbaca
+                try:
+                        state = transisi[state][x] #state diganti dengan next state, berulang sepanjang string
+                except KeyError:
+                    print "simbol ",x," tidak valid"
+                    break
+                if state in tokens:
+                    tok.append(tokens[state]) #menambahkan nomor token yang terbaca
 	print tok
-#setiap token harus dipisahkan dengan spasi 
-bacakan(fa,'A',finalstate,'if ( p or q ) and r xor s then p or q')
+        print string
+#setiap token harus dipisahkan dengan spasi
+var = "if ( ) or not p q r s not xor if then"
+bacakan(fa,'A',finalstate,var)
